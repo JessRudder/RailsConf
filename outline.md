@@ -1,7 +1,9 @@
 - intro
+  - talk to people about coming back from lunch...Did anyone grab a coffee/hot chocolate?
   - used to work at StarBucks (RubyBucks)
-  - due to how the system was set up, people would easily steal drinks that didn't belong to them
-  - caffeine creeper grabbing stuff when no one was looking
+  - tell story about Mary, always waiting to close out one transaction before trying to get additional coffee
+  - Brings us to topic....Security in Coffee Shops
+    - maybe save that for a Java Conference....get it?  wink wink
 - sql injection (Squeeeeeelie)
   - what it is
     - submitting sql as part of your query in the hopes of getting back data that doesn't belong to you
