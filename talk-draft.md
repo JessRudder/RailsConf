@@ -4,21 +4,31 @@ Many lifetimes ago, I worked as a barista at a popular coffee shop.
 
 It was a mid-sized neighborhood store with a mix of traffic coming from the surrounding homes and businesses.  We were actually right across the street from one of the big game studios so we'd always have a spike in business right before the next Call of Duty was supposed to be finished.  It was a nice mix of customers and most of the regulars were great....but there was one....(there always is).
 
-Susie <put an asterisk with name changed to protect the guilty> would come in 3-4 times per week...and she always had the same order.  "Triple espresso please"....
+Susie <put an asterisk with name changed to protect the guilty> would come in 3-4 times per week...and she always had the same order.  "Double espresso please"....
 
-======= REMOVE THIS PART ======
-It seems that someone had discovered a vulnerability in the Ruby Bucks system. There was a brief moment between the time where I set the drink out and when Bill picked the drink up when nobody was watching the drink.  In that moment, it was simple for someone sketchy caffeine addict to abscond with coffee that didn't belong to them.
+I'd make small talk as we finished the transaction...
 
-======= END REMOVE =========
+"How's it going Susie?"
+
+"*sigh* Oh...you know....not so well...."
+
+She'd launch into some tale of woe...things that just weren't going well (mind you, she was a customer that was in 3-4 times per week and it was always the same deal).  Then, right as I'd hand her the change, she'd perk up a bit and say, "But if you made that a triple latte instead, it'd be better..."
+
+Every. Single. Time.
+
+She'd wait for that transaction to end and then she'd try to sneak something else in there.
+
 Which brings me to our topic - safety and security in coffee shops.
 
 Wait....that doesn't sound right....hmmm...maybe save that for a java conference.
 
-So...we're web developers which is awesome because we don't have to worry about people stealing 
+Well, we're a room full of (mostly) web developers.  So, lets talk about security in web apps instead.
 
-Our web applications have similar vulnerabilites.  A brief moment in time, where, if we're not careful, no one is minding the database and shady characters can walk off with something more valuable than coffee.  And, I know what you're thinking...."We're developers!  There's nothing more valuable than coffee."  But, in this case, there is...it's your customer's private information.
+At the risk of stretching a metaphor a bit too far, I'd argue that our web applications have a vulnerability that's very similar to the one Susie was exploiting at that old coffee shop.
 
-------- End Intro -------
+SQL injection.
+
+We'll go into more detail in a minute, but, in brief, it's when someone closes out a legitimate transaction with your database then immediately tries to sneak more database interactions in there in order to walk off with something a whole lot more valuable than coffee.  And, I know what you're thinking...."We're developers!  There's nothing more valuable than coffee."  But, in this case, there is...it's your customer's private information.
 
 When we talk about security vulnerabilities, we expect that we're talking about something new.  A vulnerability that was just discovered in the past few weeks.  Something like Heartbleed where it's announced publicly the same day a patch is released.
 
@@ -46,7 +56,7 @@ Which gives us the following SQL query:
 
 SELECT "restaurant".* FROM "restaurants" WHERE (name LIKE '%'); DELETE FROM Restaurants -- %’)
 
-And, suddenly, your entire restaurant table is gone....not your table at the restaurant...your restaurant table in your database.  Though you should probably cancel those reservations because you're going to be spending the rest of the night restoring your database from backups.
+And, suddenly, your entire restaurant table is gone....not your table at the restaurant...your restaurant table in your database.  Though you should probably cancel those reservations because you're going to be spending the rest of the night restoring your database from backups.  You do have database backups, right?  Not really our topic today...but generally a good idea.
 
 So, yeah...SQL injection....it has been on people's radar for at least 18 years and yet it regularly ranks at the top of OWASPs (Open Web Application Security Project) 10 most critical web application security risks.
 
