@@ -1,5 +1,7 @@
 **40 Minutes including all Q/A**
 
+Did you all enjoy lunch?  Anyone go out and grab a coffee during the break?  Yeah...some of you?
+
 Many lifetimes ago, I worked as a barista at a popular coffee shop.
 
 It was a mid-sized neighborhood store with a mix of traffic coming from the surrounding homes and businesses.  We were actually right across the street from one of the big game studios so we'd always have a spike in business right before the next Call of Duty was supposed to be finished.  It was a nice mix of customers and most of the regulars were great....but there was one....(there always is).
@@ -16,7 +18,7 @@ She'd launch into some tale of woe...things that just weren't going well (mind y
 
 Every. Single. Time.
 
-She'd wait for that transaction to end and then she'd try to sneak something else in there.
+She'd wait for the register to close...signaling that the transaction had officially come to an end.  Then she'd try to sneak something else in there.
 
 Which brings me to our topic - safety and security in coffee shops.
 
@@ -24,11 +26,11 @@ Wait....that doesn't sound right....hmmm...maybe save that for a java conference
 
 Well, we're a room full of (mostly) web developers.  So, lets talk about security in web apps instead.
 
-At the risk of stretching a metaphor a bit too far, I'd argue that our web applications have a vulnerability that's very similar to the one Susie was exploiting at that old coffee shop.
+At the risk of stretching that coffee shop metaphor a bit too far, I'd argue that our web applications have a vulnerability that's very similar to the one Susie was exploiting.
 
 SQL injection.
 
-We'll go into more detail in a minute, but, in brief, it's when someone closes out a legitimate transaction with your database then immediately tries to sneak more database interactions in there in order to walk off with something a whole lot more valuable than coffee.  And, I know what you're thinking...."We're developers!  There's nothing more valuable than coffee."  But, in this case, there is...it's your customer's private information.
+We'll go into more detail in a minute, but, in brief, it's when someone closes out a legitimate transaction with your database then immediately tries to sneak more SQL commands in there so they can interact with your database and walk off with something a whole lot more valuable than coffee.  And, I know what you're thinking...."We're developers!  There's nothing more valuable than coffee."  But, in this case, there is...it's your customer's private information.
 
 When we talk about security vulnerabilities, we expect that we're talking about something new.  A vulnerability that was just discovered in the past few weeks.  Something like Heartbleed where it's announced publicly the same day a patch is released.
 
@@ -44,7 +46,7 @@ So, Rain Forrest Puppy had discovered that SQL databases (which were just starti
 
 A shady character...like this one....could user your innocent little web form to gain access to parts of your database you didn't want them to have by piggy backing their own SQL requests onto your intended request....like so.
 
-You kindly provide your users with the ability to search for a restaurant even when they only know part of the name, like so:
+You kindly provide your users with the ability to search for a restaurant even when they only know part of the name:
 
 SELECT "restaurant".* FROM "restaurants" WHERE ("name LIKE '%user_input%');
 
@@ -66,11 +68,11 @@ In June 2011 sonypictures.com lost the data of over 1,000,000 users, including p
 
 In October of 2012, hackers used SQLi to get the personal records of thousands of students from 53 universities including Harvard, Stanford, Princeton and other top universities around the world.  It turns out that student info is highly sought after due to a combo of pristine credit records and lack of watching their credit scores.  I guess that's one positive side effect of crushing student debt...by the time you graduate, no one wants to steal your identity any more.
 
-In August 2014, Russian hackers steal 1.2 billion username and passord combinations and 500,000 email addresses from 400,000 sites.  These aren't just small sites made by your cousins best friends uncles kid who sort of knows how to code.  Some of these sites were for Fortune 500 companies.  And this wasn't pulled off by some uber-sophisticated, high tech gang of hackers - it's a group of less than a dozen men in their 20s in a small city in Russia...they actually started out as email spammers.
+In August 2014, Russian hackers stole 1.2 billion username and password combinations and 500,000 email addresses from 400,000 sites.  These weren't just small sites made by your cousin's best friend's uncle's kid who sort of knows how to code.  Some of these sites were for Fortune 500 companies.  And this wasn't pulled off by some uber-sophisticated, high tech gang of hackers - it's a group of less than a dozen men in their 20s in a small city in Russia...they actually started out as email spammers.
 
 More recently in November 2015, an electronic toy company VTech was hacked and the personal data of 5 million parents and 200,000 kids (including the names, email addresses, passwords and home addresses of the parents) was taken.  What makes it worse is that the kids accounts can be linked to the parents which means you basically have first and last names and home addresses of a bunch of kids as well.
 
-That's just a sample of some of the major hacks over the past 5 years.  There are so many more to choose from!  Hacks that affected the New York Times, Target, Sony (again), the U.S. Army and even the Department of Homeland Security!
+That's a small sample of some of the major hacks over the past 5 years.  There are so many more to choose from!  Hacks that affected the New York Times, Target, Sony (again), the U.S. Army and even the Department of Homeland Security!
 
 So what's the deal, is there some elite Hacker Havard out there teaching the world's greatest hackers how to sneak unwanted SQL commands into our databases like sneaky little code ninja?
 
@@ -92,6 +94,18 @@ Wait...you want to know how to make sure it doesn't work.
 
 Fine...if you insist.
 
+My name is Jessica and I work at the Flatiron School.  I help build Learn - an online platform for teaching people how to code.  Part of our teaching philosophy is to have people build the tools they'll be using later - it helps to ensure that they understand what's happening under the hood.  In our web development program, our students have to work with SQL and build their own light-weight ORMs.  After suffering through this for a while, we introduce them to ActiveRecord - which seems like magic!
+
+No more:
+
+SELECT * FROM "restaurants" WHERE type = "bbq"
+
+Instead:
+
+Restaurants.where(type: "bbq")
+
+And because there's so much magic involved, it's easy to to think that everything has been covered.  The only thing you need to worry about is 
+
 Well, we're at Rails Conference and you came to a talk titled "Will It Inject? A Look at SQL Injection and ActiveRecord" (which is a miracle...with a title like that I expected to have no one but my dad in the room) so I think it's safe to assume you're interested in hearing about this from an ActiveRecord perspective.
 
 But having someone yack at you about security can be boring...so instead we're going to play a little game I like to call "Will It Inject?!?"  I'll show you an ActiveRecord method and you can tell me whether or not you think it's vulnerable to SQL injection.  Feel free to play along if you're watching this at home...just shout it right out at the monitor.  I won't judge.
@@ -106,5 +120,8 @@ Throw a trick one in there "Will it inject?  No!  This isn't even ActiveRecord..
 
 Some of you may be thinking, if people are aware of these vulnerabilities, why hasn't it been fixed?  I'll go back to my hotel room tonight, write the patch and open a PR!
 
-If only it were that simple.  This is yet another example of that age old tension between freedom and security.  Those vulnerabilities are there to allow us flexibility.  The coffee shop I worked at gave baristas wide lattitude on bonus shots and upgrades to allow us to surprise and delight customers.  If they had locked things down and said, no one ever gets anything they didn't pay for...well, her "I'd like a latte but I want to pay for a triple espresso" shtick would definitely not have worked.  But there were a lot of magical moments with other customers that would have been missed.  Similarly, there are times when the data we need from the database is complicated and being able to drop down to raw sql is the only straightforward way of getting it.  If ActiveRecord didn't allow this flexibility, it would start to be less and less useful as our apps get more and more complex.
+If only it were that simple.  This is yet another example of that age old tension between freedom and security.  Those vulnerabilities are there to allow us flexibility.
 
+The coffee shop I worked at gave baristas wide lattitude on bonus shots and upgrades to allow us to surprise and delight customers.  They could have locked things down with a policy that said, "No one ever gets anything they didn't pay for."  And that definitely would have meant that Susie's "I'd like a latte but I want to pay for a triple espresso" shtick would never work.  But we would have lost a lot of important, magical moments with other customers.
+
+Similarly, there are times when the data we need from the database is complicated and being able to drop down to raw sql is the only straightforward way of getting it.  If ActiveRecord didn't allow this flexibility, it would be less and less useful as our apps got more and more complex.  We'd spend a lot of time writing our own methods from scratch and if we've got time to do that we've probably got time to just make sure that we're not leaving our ActiveRecord methods vulnerable.
