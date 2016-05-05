@@ -42,7 +42,7 @@ Fire 4cid
 
 You know it's a legit hacker name because they used a 4 instead of an A.
 
-So, Rain Forrest Puppy had discovered that SQL databases (which were just starting to replace the then more popular Access databases) allowed batch commands - the ability to send multiple requests through to the database at a time.  NBD because multitasking is good, right?  Perhaps I want to be able to select all employees that are engineers then average their bags_of_chips_consumed column.  Which is all well and good in closed systems.  However, when you have input coming from outside users heading straight into your database...well, things get a little dicy.
+So, Rain Forrest Puppy had discovered that SQL databases (which were just starting to replace the then more popular Access databases) allowed batch commands - the ability to send multiple requests through to the database at a time.  NBD because multitasking is good, right?  Perhaps I want to be able to select all employees that are engineers then average their chips_consumed (or, if you're joining us from places that speak that other english - chips_consumed).  Which, in both cases is...high.  We'll leave it at that.  This is all well and good in closed systems.  However, when you have input coming from outside users heading straight into your database...well, things get a little dicy.
 
 A shady character...like this one....could user your innocent little web form to gain access to parts of your database you didn't want them to have by piggy backing their own SQL requests onto your intended request....like so.
 
@@ -60,7 +60,7 @@ SELECT "restaurant".* FROM "restaurants" WHERE (name LIKE '%'); DELETE FROM Rest
 
 And, suddenly, your entire restaurant table is gone....not your table at the restaurant...your restaurant table in your database.  Though you should probably cancel those reservations because you're going to be spending the rest of the night restoring your database from backups.  You do have database backups, right?  Not really our topic today...but generally a good idea.
 
-So, yeah...SQL injection....it has been on people's radar for at least 18 years and yet it regularly ranks at the top of OWASPs (Open Web Application Security Project) 10 most critical web application security risks.
+So, yeah...SQL injection....it has been on people's radar for at least 18 years and yet it regularly ranks at the top of OWASPs (Open Web Application Security Project) 10 most critical web application security risks.  And that is a top 10 list you don't want to be at the top of.
 
 In fact, a quick scan of recent news will give you plenty of examples of SQL injection in action.
 
