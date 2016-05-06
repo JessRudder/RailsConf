@@ -108,7 +108,7 @@ And because there's so much magic involved, it's easy to to think that everythin
 
 Alright - we're at Rails Conference and you came to a talk titled "Will It Inject? A Look at SQL Injection and ActiveRecord"...and congratulations for making it all the way to the title slide.  And, given this title, I think it's safe to assume you're interested in hearing about this from an ActiveRecord perspective.
 
-But having someone yack at you about security can be boring...so instead we're going to play a little game I like to call "Will It Inject?!?"  I'll show you an ActiveRecord method and you can tell me whether or not you think it's vulnerable to SQL injection.  Feel free to play along if you're watching this at home...just shout it right out at the monitor.  I won't judge.
+But having someone yack at you about security (especially right after lunch) can be boring...so instead we're going to play a little game I like to call "Will It Inject?!?"  I'll show you an ActiveRecord method and you can tell me whether or not you think it's vulnerable to SQL injection.  Feel free to play along if you're watching this at home...just shout it right out at the monitor.  I won't judge.
 
 
 ````
