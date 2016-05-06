@@ -125,3 +125,8 @@ If only it were that simple.  This is yet another example of that age old tensio
 The coffee shop I worked at gave baristas wide lattitude on bonus shots and upgrades to allow us to surprise and delight customers.  They could have locked things down with a policy that said, "No one ever gets anything they didn't pay for."  And that definitely would have meant that Susie's "I'd like a latte but I want to pay for a triple espresso" shtick would never work.  But we would have lost a lot of important, magical moments with other customers.
 
 Similarly, there are times when the data we need from the database is complicated and being able to drop down to raw sql is the only straightforward way of getting it.  If ActiveRecord didn't allow this flexibility, it would be less and less useful as our apps got more and more complex.  We'd spend a lot of time writing our own methods from scratch and if we've got time to do that we've probably got time to just make sure that we're not leaving our ActiveRecord methods vulnerable.
+
+
+It's not something we usually have to pay attention to because ActiveRecord has done a great job of protecting against it.  However, if you're not aware, these sorts of things can sneak up on you.  Next thing you know, your company's on the nightly news.  With just  little bit of prevention, you can make sure you stay out of the new.
+
+Here are some resources:
